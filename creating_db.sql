@@ -205,7 +205,8 @@ VALUES(110015, 10014, 10014, 60000, 30, 12, 2020);
 INSERT INTO `evaluations`(evaluation_id, evaluator_id, property_id, price, eval_day, eval_month, eval_year) 
 VALUES(110016, 10011, 10012, 210000, 23, 09, 2020);
 
-# a.
+-- Showing the id and the address of properties belonging to areas with average income greater than or equall to 40.000 EUR
+-- and which have been evaluated between 24/12/2020 and 31/12/2020
 
 SELECT property_id, street, str_num, city, zip
 FROM properties
@@ -220,8 +221,8 @@ AND property_id IN (SELECT property_id
 					AND eval_year = 2020
 	                );
 				
-# b.
-###
+-- Showing the amount of evaluations in 2020 of every evaluator
+
 SELECT
 y.evaluator_id,
 count(f.evaluation_id) AS No_of_evals_in_2020
@@ -247,7 +248,7 @@ ON y.evaluator_id = f.evaluator_id
 GROUP BY y.evaluator_id;
 
 
-# c.
+-- Showing the id of properties that have been evaluated more than 2 times in 2020.
 
 SELECT property_id
 FROM evaluations
@@ -255,7 +256,7 @@ WHERE eval_year = 2020
 GROUP BY property_id
 HAVING count(evaluation_id) > 2;
 
-# d.
+-- Showing the id of evaluations that took place in areas with average income greater than 25.000 EUR, by using nested queries
 SELECT evaluation_id
 FROM evaluations
 WHERE property_id IN (SELECT property_id
@@ -267,7 +268,7 @@ WHERE property_id IN (SELECT property_id
                       );                    
 #GROUP BY property_id;
 
-# e.
+--Showing the amount of evaluation in 2020 for properties that belong to areas with population greater than 50.000
 
 SELECT count(evaluation_id) AS No_of_evaluations
 FROM evaluations
@@ -280,7 +281,8 @@ WHERE property_id IN (SELECT property_id
                       )
 AND eval_year = 2020;
 
-# f.
+-- For every region id, showing the region id and the average price per square meter of the region, 
+-- in an ascending order of the average price per square meter of the area
 
 SELECT region_id, round(avg(price / size), 2) AS region_avg_price_to_sqm_ratio
 FROM (
@@ -292,7 +294,8 @@ FROM (
 GROUP BY region_id
 ORDER BY region_avg_price_to_sqm_ratio ASC;
 
-# g.
+-- For every evaluator and for 2020, showing the evaluator's id, the amount of residential evaluations he/she did, 
+-- and the amount of office evaluations he/she did.
 
 SELECT
 y.evaluator_id,
@@ -323,7 +326,7 @@ ON y.evaluator_id = f.evaluator_id
 GROUP BY y.evaluator_id;
 
 
-# h.
+-- Showing the percentage change of price per square meter between 2019 and 2020, for every region id.
 
 SELECT 
 region_id, 
@@ -361,7 +364,8 @@ LEFT JOIN (
 ON reg.region_id = tab2.region_id
 )AS tab3;
 
-# i.
+-- For every region id and for 2020, showing the amount of evaluations in each region as a percentage of the total number of evaluations of 2020, and the population
+-- of each area as a percentage of the population of all areas together
 
 SELECT r.region_id, 
 (x.region_evals_of_20/x.total_evals_of_20)*100 AS region_evals_20_to_total_evals_20, 
@@ -381,5 +385,3 @@ LEFT JOIN
 	) AS x
 ON r.region_id = x.region_id
 GROUP BY r.region_id;
-
-
