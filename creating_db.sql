@@ -66,7 +66,7 @@ CREATE TABLE evaluations (
 	FOREIGN KEY (property_id) 
 		REFERENCES properties(property_id)
 );
-# Inserting data manually into evaluators table
+-- Inserting data manually into evaluators table
 INSERT INTO `evaluators`(evaluator_id, f_name, l_name, sex, age, street, str_num, city, zip) 
 VALUES(10010, "Ioannis", "Triantafyllakis", "Male", 24, "Karystou", 20, "Athens", 11523);
 INSERT INTO `evaluators`(evaluator_id, f_name, l_name, sex, age, street, str_num, city, zip) 
@@ -87,7 +87,7 @@ INSERT INTO `evaluators`(evaluator_id, f_name, l_name, sex, age, street, str_num
 VALUES(10018, "Giorgos", "Nikolopoulos", "Male", 43, "Artas", 32, "Athens", 12209);
 
     
-# Inserting data manually into region table
+-- Inserting data manually into region table
 INSERT INTO `region`(region_id, r_name, population, avg_income) 
 VALUES(00001, "Ambelokhpoi", 255000, 9500);
 INSERT INTO `region`(region_id, r_name, population, avg_income) 
@@ -109,7 +109,7 @@ VALUES(00009, "Nea Smyrni", 125000, 14000);
 INSERT INTO `region`(region_id, r_name, population, avg_income) 
 VALUES(00010, "Glyfada", 90000, 23000);
 
-# Inserting data manually into properties table
+-- Inserting data manually into properties table
 INSERT INTO `properties`(property_id, street, str_num, city, zip, p_floor, size, constr_year, region_id, is_office, is_residential) 
 VALUES(10001, "Panormou", 77, "Athens", 11524, 2, 78.0, 1996, 00001, False, True);
 INSERT INTO `properties`(property_id, street, str_num, city, zip, p_floor, size, constr_year, region_id, is_office, is_residential) 
@@ -139,7 +139,7 @@ VALUES(10013, "Plateia Exarcehion", 1, "Athens", 23754, 2, 87.0, 1992, 00004, Fa
 INSERT INTO `properties`(property_id, street, str_num, city, zip, p_floor, size, constr_year, region_id, is_office, is_residential) 
 VALUES(10014, "Patriarchou Ioakeim", 3, "Athens", 16129, 5, 200.5, 2007, 00003, False, True);
 
-# Inserting data manually into office table
+-- Inserting data manually into office table
 INSERT INTO `office`(property_id, tax_id) 
 VALUES(10005, 168798532);
 INSERT INTO `office`(property_id, tax_id) 
@@ -151,7 +151,7 @@ VALUES(10010, 199732731);
 INSERT INTO `office`(property_id, tax_id) 
 VALUES(10011, 236712366);
 
-# Inserting data manually into residential table
+-- Inserting data manually into residential table
 INSERT INTO `residential`(property_id, id_num) 
 VALUES(10001, "AM987654");
 INSERT INTO `residential`(property_id, id_num) 
@@ -171,7 +171,7 @@ VALUES(10013, "AY982431");
 INSERT INTO `residential`(property_id, id_num) 
 VALUES(10014, "AC445589");
 
-# Inserting data manually into evaluations table
+-- Inserting data manually into evaluations table
 INSERT INTO `evaluations`(evaluation_id, evaluator_id, property_id, price, eval_day, eval_month, eval_year) 
 VALUES(110001, 10010, 10001, 84000, 22, 01, 2018);
 INSERT INTO `evaluations`(evaluation_id, evaluator_id, property_id, price, eval_day, eval_month, eval_year) 
